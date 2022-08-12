@@ -1,16 +1,16 @@
 {
-    "name": "laravel/jetstream",
-    "description": "Tailwind scaffolding for the Laravel framework.",
-    "keywords": ["laravel", "tailwind", "auth"],
+    "name": "sinan-aydogan/tailadmin-core",
+    "description": "Admin Dashboard Development Kit based Jetstream(Inertiajs with Vuejs) and Tailwindcss",
+    "keywords": ["admin","dashboard","vuejs","tailwindcss","component","ui kit","dashboard","multi-language","jetstream","inertiajs","laravel", "tailwind", "auth"],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel/jetstream/issues",
-        "source": "https://github.com/laravel/jetstream"
+        "issues": "https://github.com/sinan-aydogan/tailadmin-core/issues",
+        "source": "https://github.com/sinan-aydogan/tailadmin-core"
     },
     "authors": [
         {
-            "name": "Taylor Otwell",
-            "email": "taylor@laravel.com"
+            "name": "Sinan AYDOĞAN",
+            "email": "admin@tailadmin.dev"
         }
     ],
     "require": {
