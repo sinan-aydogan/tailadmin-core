@@ -416,6 +416,7 @@ EOF;
         // TailAdmin
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/TailAdmin', resource_path('js/TailAdmin'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/Lang', resource_path('js/Lang'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/Sources', resource_path('js/Sources'));
 
         // Routes...
         $this->replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));

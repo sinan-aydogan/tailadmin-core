@@ -18,6 +18,14 @@ const i18n = createI18n({
     },
 });
 
+// Icon
+import {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+    FontAwesomeLayersText,
+} from "@fortawesome/vue-fontawesome";
+import "./Sources/Icons"
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -34,6 +42,9 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(i18n)
+            .component("font-awesome-icon", FontAwesomeIcon)
+            .component("font-awesome-layers", FontAwesomeLayers)
+            .component("font-awesome-layers-text", FontAwesomeLayersText)
             .mount(el);
     },
 });
