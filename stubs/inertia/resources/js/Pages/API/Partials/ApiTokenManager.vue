@@ -77,17 +77,17 @@ const deleteApiToken = () => {
         <!-- Generate API Token -->
         <JetFormSection @submitted="createApiToken">
             <template #title>
-                Create API Token
+                {{t('system.auth.api.create.title')}}
             </template>
 
             <template #description>
-                API tokens allow third-party services to authenticate with our application on your behalf.
+                {{t('system.auth.api.create.description')}}
             </template>
 
             <template #form>
                 <!-- Token Name -->
                 <div class="col-span-6 sm:col-span-4">
-                    <JetLabel for="name" value="Name" />
+                    <JetLabel for="name" :value="t('system.auth.api.token.name')" />
                     <JetInput
                         id="name"
                         v-model="createApiTokenForm.name"
@@ -100,7 +100,7 @@ const deleteApiToken = () => {
 
                 <!-- Token Permissions -->
                 <div v-if="availablePermissions.length > 0" class="col-span-6">
-                    <JetLabel for="permissions" value="Permissions" />
+                    <JetLabel for="permissions" :value="t('system.auth.api.token.permissions')" />
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div v-for="permission in availablePermissions" :key="permission">
@@ -115,11 +115,11 @@ const deleteApiToken = () => {
 
             <template #actions>
                 <JetActionMessage :on="createApiTokenForm.recentlySuccessful" class="mr-3">
-                    Created.
+                    {{t('system.global.message.created')}}
                 </JetActionMessage>
 
                 <JetButton :class="{ 'opacity-25': createApiTokenForm.processing }" :disabled="createApiTokenForm.processing">
-                    Create
+                    {{t('system.global.action.create')}}
                 </JetButton>
             </template>
         </JetFormSection>
@@ -131,11 +131,11 @@ const deleteApiToken = () => {
             <div class="mt-10 sm:mt-0">
                 <JetActionSection>
                     <template #title>
-                        Manage API Tokens
+                        {{t('system.auth.api.manage.title')}}
                     </template>
 
                     <template #description>
-                        You may delete any of your existing tokens if they are no longer needed.
+                        {{t('system.auth.api.manage.description')}}
                     </template>
 
                     <!-- API Token List -->
@@ -148,7 +148,7 @@ const deleteApiToken = () => {
 
                                 <div class="flex items-center">
                                     <div v-if="token.last_used_ago" class="text-sm text-gray-400">
-                                        Last used {{ token.last_used_ago }}
+                                        {{t('system.auth.api.lastUsed', [token.last_used_ago])}}
                                     </div>
 
                                     <button
@@ -156,11 +156,11 @@ const deleteApiToken = () => {
                                         class="cursor-pointer ml-6 text-sm text-gray-400 underline"
                                         @click="manageApiTokenPermissions(token)"
                                     >
-                                        Permissions
+                                        {{t('system.auth.api.token.permissions')}}
                                     </button>
 
                                     <button class="cursor-pointer ml-6 text-sm text-red-500" @click="confirmApiTokenDeletion(token)">
-                                        Delete
+                                        {{t('system.global.action.delete')}}
                                     </button>
                                 </div>
                             </div>
@@ -173,12 +173,12 @@ const deleteApiToken = () => {
         <!-- Token Value Modal -->
         <JetDialogModal :show="displayingToken" @close="displayingToken = false">
             <template #title>
-                API Token
+                {{t('system.auth.api.token.view.title')}}
             </template>
 
             <template #content>
                 <div>
-                    Please copy your new API token. For your security, it won't be shown again.
+                    {{t('system.auth.api.token.view.description')}}
                 </div>
 
                 <div v-if="$page.props.jetstream.flash.token" class="mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500">
@@ -188,7 +188,7 @@ const deleteApiToken = () => {
 
             <template #footer>
                 <JetSecondaryButton @click="displayingToken = false">
-                    Close
+                    {{t('system.global.action.close')}}
                 </JetSecondaryButton>
             </template>
         </JetDialogModal>
@@ -196,7 +196,7 @@ const deleteApiToken = () => {
         <!-- API Token Permissions Modal -->
         <JetDialogModal :show="managingPermissionsFor != null" @close="managingPermissionsFor = null">
             <template #title>
-                API Token Permissions
+                {{t('system.auth.api.token.permissions')}}
             </template>
 
             <template #content>
@@ -212,7 +212,7 @@ const deleteApiToken = () => {
 
             <template #footer>
                 <JetSecondaryButton @click="managingPermissionsFor = null">
-                    Cancel
+                    {{t('system.global.action.cancel')}}
                 </JetSecondaryButton>
 
                 <JetButton
@@ -221,7 +221,7 @@ const deleteApiToken = () => {
                     :disabled="updateApiTokenForm.processing"
                     @click="updateApiToken"
                 >
-                    Save
+                    {{t('system.global.action.save')}}
                 </JetButton>
             </template>
         </JetDialogModal>
@@ -229,16 +229,16 @@ const deleteApiToken = () => {
         <!-- Delete Token Confirmation Modal -->
         <JetConfirmationModal :show="apiTokenBeingDeleted != null" @close="apiTokenBeingDeleted = null">
             <template #title>
-                Delete API Token
+                {{t('system.auth.api.delete.title')}}
             </template>
 
             <template #content>
-                Are you sure you would like to delete this API token?
+                {{t('system.auth.api.delete.description')}}
             </template>
 
             <template #footer>
                 <JetSecondaryButton @click="apiTokenBeingDeleted = null">
-                    Cancel
+                    {{t('system.global.action.cancel')}}
                 </JetSecondaryButton>
 
                 <JetDangerButton
@@ -247,7 +247,7 @@ const deleteApiToken = () => {
                     :disabled="deleteApiTokenForm.processing"
                     @click="deleteApiToken"
                 >
-                    Delete
+                    {{t('system.global.action.delete')}}
                 </JetDangerButton>
             </template>
         </JetConfirmationModal>

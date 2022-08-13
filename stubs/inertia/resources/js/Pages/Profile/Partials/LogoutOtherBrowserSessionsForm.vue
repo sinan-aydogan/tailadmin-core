@@ -45,16 +45,16 @@ const closeModal = () => {
 <template>
     <JetActionSection>
         <template #title>
-            Browser Sessions
+            {{t('system.auth.logout.otherDevices.title')}}
         </template>
 
         <template #description>
-            Manage and log out your active sessions on other browsers and devices.
+            {{t('system.auth.logout.otherDevices.description')}}
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.
+                {{t('system.auth.logout.otherDevices.info')}}
             </div>
 
             <!-- Other Browser Sessions -->
@@ -105,7 +105,7 @@ const closeModal = () => {
                                 {{ session.ip_address }},
 
                                 <span v-if="session.is_current_device" class="text-green-500 font-semibold">This device</span>
-                                <span v-else>Last active {{ session.last_active }}</span>
+                                <span v-else>{{t('system.auth.logout.otherDevices.lastActive')}} {{ session.last_active }}</span>
                             </div>
                         </div>
                     </div>
@@ -114,22 +114,22 @@ const closeModal = () => {
 
             <div class="flex items-center mt-5">
                 <JetButton @click="confirmLogout">
-                    Log Out Other Browser Sessions
+                    {{t('system.auth.logout.otherDevices.logOutOtherDevices')}}
                 </JetButton>
 
                 <JetActionMessage :on="form.recentlySuccessful" class="ml-3">
-                    Done.
+                    {{t('system.global.message.done')}}
                 </JetActionMessage>
             </div>
 
             <!-- Log Out Other Devices Confirmation Modal -->
             <JetDialogModal :show="confirmingLogout" @close="closeModal">
                 <template #title>
-                    Log Out Other Browser Sessions
+                    {{t('system.auth.logout.otherDevices.modal.title')}}
                 </template>
 
                 <template #content>
-                    Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.
+                    {{t('system.auth.logout.otherDevices.modal.description')}}
 
                     <div class="mt-4">
                         <JetInput
@@ -147,7 +147,7 @@ const closeModal = () => {
 
                 <template #footer>
                     <JetSecondaryButton @click="closeModal">
-                        Cancel
+                        {{t('system.global.action.cancel')}}
                     </JetSecondaryButton>
 
                     <JetButton
@@ -156,7 +156,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="logoutOtherBrowserSessions"
                     >
-                        Log Out Other Browser Sessions
+                        {{t('system.auth.logout.otherDevices.logOutOtherDevices')}}
                     </JetButton>
                 </template>
             </JetDialogModal>

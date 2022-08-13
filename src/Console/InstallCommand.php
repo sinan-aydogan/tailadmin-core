@@ -413,6 +413,10 @@ EOF;
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/Pages/Auth', resource_path('js/Pages/Auth'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/Pages/Profile', resource_path('js/Pages/Profile'));
 
+        // TailAdmin
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/TailAdmin', resource_path('js/TailAdmin'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/Lang', resource_path('js/Lang'));
+
         // Routes...
         $this->replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
 

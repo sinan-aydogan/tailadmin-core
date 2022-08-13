@@ -38,7 +38,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Two-factor Confirmation" />
+    <Head :title="t('system.auth.twoFactorAuth.confirm.title')" />
 
     <JetAuthenticationCard>
         <template #logo>
@@ -47,11 +47,11 @@ const submit = () => {
 
         <div class="mb-4 text-sm text-gray-600">
             <template v-if="! recovery">
-                Please confirm access to your account by entering the authentication code provided by your authenticator application.
+                {{t('system.auth.twoFactorAuth.confirm.description') }}
             </template>
 
             <template v-else>
-                Please confirm access to your account by entering one of your emergency recovery codes.
+                {{ t('system.auth.twoFactorAuth.confirm.emergencyCodes') }}
             </template>
         </div>
 
@@ -59,7 +59,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div v-if="! recovery">
-                <JetLabel for="code" value="Code" />
+                <JetLabel for="code" :value="t('system.auth.twoFactorAuth.code.label')" />
                 <JetInput
                     id="code"
                     ref="codeInput"
@@ -73,7 +73,7 @@ const submit = () => {
             </div>
 
             <div v-else>
-                <JetLabel for="recovery_code" value="Recovery Code" />
+                <JetLabel for="recovery_code" :value="t('system.auth.twoFactorAuth.code.recoveryCode')" />
                 <JetInput
                     id="recovery_code"
                     ref="recoveryCodeInput"
@@ -87,16 +87,16 @@ const submit = () => {
             <div class="flex items-center justify-end mt-4">
                 <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer" @click.prevent="toggleRecovery">
                     <template v-if="! recovery">
-                        Use a recovery code
+                        {{t('system.auth.twoFactorAuth.code.useRecoveryCode')}}
                     </template>
 
                     <template v-else>
-                        Use an authentication code
+                        {{t('system.auth.twoFactorAuth.code.useAuthenticationCode')}}
                     </template>
                 </button>
 
                 <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                    {{t('system.auth.login.label')}}
                 </JetButton>
             </div>
         </form>

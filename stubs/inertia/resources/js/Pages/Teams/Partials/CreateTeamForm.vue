@@ -21,16 +21,16 @@ const createTeam = () => {
 <template>
     <JetFormSection @submitted="createTeam">
         <template #title>
-            Team Details
+            {{t('system.auth.team.create.teamDetails.title')}}
         </template>
 
         <template #description>
-            Create a new team to collaborate with others on projects.
+            {{t('system.auth.team.create.teamDetails.description')}}
         </template>
 
         <template #form>
             <div class="col-span-6">
-                <JetLabel value="Team Owner" />
+                <JetLabel :value="t('system.auth.team.owner.label')" />
 
                 <div class="flex items-center mt-2">
                     <img class="object-cover w-12 h-12 rounded-full" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
@@ -45,7 +45,7 @@ const createTeam = () => {
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="name" value="Team Name" />
+                <JetLabel for="name" :value="t('system.auth.team.name.label')" />
                 <JetInput
                     id="name"
                     v-model="form.name"
@@ -59,7 +59,7 @@ const createTeam = () => {
 
         <template #actions>
             <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Create
+                {{t('system.global.action.create')}}
             </JetButton>
         </template>
     </JetFormSection>

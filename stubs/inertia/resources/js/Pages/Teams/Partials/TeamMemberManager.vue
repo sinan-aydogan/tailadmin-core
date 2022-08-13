@@ -99,23 +99,23 @@ const displayableRole = (role) => {
             <!-- Add Team Member -->
             <JetFormSection @submitted="addTeamMember">
                 <template #title>
-                    Add Team Member
+                    {{t('system.auth.team.member.add.title')}}
                 </template>
 
                 <template #description>
-                    Add a new team member to your team, allowing them to collaborate with you.
+                    {{t('system.auth.team.member.add.description')}}
                 </template>
 
                 <template #form>
                     <div class="col-span-6">
                         <div class="max-w-xl text-sm text-gray-600">
-                            Please provide the email address of the person you would like to add to this team.
+                            {{t('system.auth.team.member.add.provideEmail')}}
                         </div>
                     </div>
 
                     <!-- Member Email -->
                     <div class="col-span-6 sm:col-span-4">
-                        <JetLabel for="email" value="Email" />
+                        <JetLabel for="email" :value="t('system.auth.email.label')" />
                         <JetInput
                             id="email"
                             v-model="addTeamMemberForm.email"
@@ -127,7 +127,7 @@ const displayableRole = (role) => {
 
                     <!-- Role -->
                     <div v-if="availableRoles.length > 0" class="col-span-6 lg:col-span-4">
-                        <JetLabel for="roles" value="Role" />
+                        <JetLabel for="roles" :value="t('system.auth.team.role.label')" />
                         <JetInputError :message="addTeamMemberForm.errors.role" class="mt-2" />
 
                         <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
@@ -170,11 +170,11 @@ const displayableRole = (role) => {
 
                 <template #actions>
                     <JetActionMessage :on="addTeamMemberForm.recentlySuccessful" class="mr-3">
-                        Added.
+                        {{t('system.global.message.added')}}
                     </JetActionMessage>
 
                     <JetButton :class="{ 'opacity-25': addTeamMemberForm.processing }" :disabled="addTeamMemberForm.processing">
-                        Add
+                        {{t('system.global.action.add')}}
                     </JetButton>
                 </template>
             </JetFormSection>
@@ -186,11 +186,11 @@ const displayableRole = (role) => {
             <!-- Team Member Invitations -->
             <JetActionSection class="mt-10 sm:mt-0">
                 <template #title>
-                    Pending Team Invitations
+                    {{t('system.auth.team.member.pending.title')}}
                 </template>
 
                 <template #description>
-                    These people have been invited to your team and have been sent an invitation email. They may join the team by accepting the email invitation.
+                    {{t('system.auth.team.member.pending.description')}}
                 </template>
 
                 <!-- Pending Team Member Invitation List -->
@@ -208,7 +208,7 @@ const displayableRole = (role) => {
                                     class="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none"
                                     @click="cancelTeamInvitation(invitation)"
                                 >
-                                    Cancel
+                                    {{t('system.global.action.cancel')}}
                                 </button>
                             </div>
                         </div>
@@ -223,11 +223,11 @@ const displayableRole = (role) => {
             <!-- Manage Team Members -->
             <JetActionSection class="mt-10 sm:mt-0">
                 <template #title>
-                    Team Members
+                    {{t('system.auth.team.member.title')}}
                 </template>
 
                 <template #description>
-                    All of the people that are part of this team.
+                    {{t('system.auth.team.member.description')}}
                 </template>
 
                 <!-- Team Member List -->
@@ -261,7 +261,7 @@ const displayableRole = (role) => {
                                     class="cursor-pointer ml-6 text-sm text-red-500"
                                     @click="confirmLeavingTeam"
                                 >
-                                    Leave
+                                    {{t('system.global.action.leave')}}
                                 </button>
 
                                 <!-- Remove Team Member -->
@@ -270,7 +270,7 @@ const displayableRole = (role) => {
                                     class="cursor-pointer ml-6 text-sm text-red-500"
                                     @click="confirmTeamMemberRemoval(user)"
                                 >
-                                    Remove
+                                    {{t('system.global.action.remove')}}
                                 </button>
                             </div>
                         </div>
@@ -282,7 +282,7 @@ const displayableRole = (role) => {
         <!-- Role Management Modal -->
         <JetDialogModal :show="currentlyManagingRole" @close="currentlyManagingRole = false">
             <template #title>
-                Manage Role
+                {{t('system.auth.team.role.manage.title')}}
             </template>
 
             <template #content>
@@ -327,7 +327,7 @@ const displayableRole = (role) => {
 
             <template #footer>
                 <JetSecondaryButton @click="currentlyManagingRole = false">
-                    Cancel
+                    {{t('system.global.action.cancel')}}
                 </JetSecondaryButton>
 
                 <JetButton
@@ -336,7 +336,7 @@ const displayableRole = (role) => {
                     :disabled="updateRoleForm.processing"
                     @click="updateRole"
                 >
-                    Save
+                    {{t('system.global.action.save')}}
                 </JetButton>
             </template>
         </JetDialogModal>
@@ -344,16 +344,16 @@ const displayableRole = (role) => {
         <!-- Leave Team Confirmation Modal -->
         <JetConfirmationModal :show="confirmingLeavingTeam" @close="confirmingLeavingTeam = false">
             <template #title>
-                Leave Team
+                {{t('system.auth.team.member.leave.title')}}
             </template>
 
             <template #content>
-                Are you sure you would like to leave this team?
+                {{t('system.auth.team.member.leave.areYouSure')}}
             </template>
 
             <template #footer>
                 <JetSecondaryButton @click="confirmingLeavingTeam = false">
-                    Cancel
+                    {{t('system.global.action.cancel')}}
                 </JetSecondaryButton>
 
                 <JetDangerButton
@@ -362,7 +362,7 @@ const displayableRole = (role) => {
                     :disabled="leaveTeamForm.processing"
                     @click="leaveTeam"
                 >
-                    Leave
+                    {{t('system.global.action.leave')}}
                 </JetDangerButton>
             </template>
         </JetConfirmationModal>
@@ -370,16 +370,16 @@ const displayableRole = (role) => {
         <!-- Remove Team Member Confirmation Modal -->
         <JetConfirmationModal :show="teamMemberBeingRemoved" @close="teamMemberBeingRemoved = null">
             <template #title>
-                Remove Team Member
+                {{t('system.auth.team.member.remove.title')}}
             </template>
 
             <template #content>
-                Are you sure you would like to remove this person from the team?
+                {{t('system.auth.team.member.remove.areYouSure')}}
             </template>
 
             <template #footer>
                 <JetSecondaryButton @click="teamMemberBeingRemoved = null">
-                    Cancel
+                    {{t('system.global.action.cancel')}}
                 </JetSecondaryButton>
 
                 <JetDangerButton
@@ -388,7 +388,7 @@ const displayableRole = (role) => {
                     :disabled="removeTeamMemberForm.processing"
                     @click="removeTeamMember"
                 >
-                    Remove
+                    {{t('system.global.action.remove')}}
                 </JetDangerButton>
             </template>
         </JetConfirmationModal>

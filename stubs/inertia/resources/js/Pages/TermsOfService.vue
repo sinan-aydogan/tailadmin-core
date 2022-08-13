@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Terms of Service" />
+    <Head :title="t('system.auth.term.terms')" />
 
     <div class="font-sans text-gray-900 antialiased">
         <div class="pt-4 bg-gray-100">

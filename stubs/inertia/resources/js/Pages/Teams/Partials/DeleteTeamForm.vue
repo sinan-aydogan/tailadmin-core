@@ -27,37 +27,37 @@ const deleteTeam = () => {
 <template>
     <JetActionSection>
         <template #title>
-            Delete Team
+            {{t('system.auth.team.delete.title')}}
         </template>
 
         <template #description>
-            Permanently delete this team.
+            {{t('system.auth.team.delete.description')}}
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once a team is deleted, all of its resources and data will be permanently deleted. Before deleting this team, please download any data or information regarding this team that you wish to retain.
+                {{t('system.auth.team.delete.warning')}}
             </div>
 
             <div class="mt-5">
                 <JetDangerButton @click="confirmTeamDeletion">
-                    Delete Team
+                    {{t('system.auth.team.delete.label')}}
                 </JetDangerButton>
             </div>
 
             <!-- Delete Team Confirmation Modal -->
             <JetConfirmationModal :show="confirmingTeamDeletion" @close="confirmingTeamDeletion = false">
                 <template #title>
-                    Delete Team
+                    {{t('system.auth.team.delete.title')}}
                 </template>
 
                 <template #content>
-                    Are you sure you want to delete this team? Once a team is deleted, all of its resources and data will be permanently deleted.
+                    {{t('system.auth.team.delete.areYouSure')}}
                 </template>
 
                 <template #footer>
                     <JetSecondaryButton @click="confirmingTeamDeletion = false">
-                        Cancel
+                        {{t('system.global.action.cancel')}}
                     </JetSecondaryButton>
 
                     <JetDangerButton
@@ -66,7 +66,7 @@ const deleteTeam = () => {
                         :disabled="form.processing"
                         @click="deleteTeam"
                     >
-                        Delete Team
+                        {{t('system.auth.team.delete.label')}}
                     </JetDangerButton>
                 </template>
             </JetConfirmationModal>

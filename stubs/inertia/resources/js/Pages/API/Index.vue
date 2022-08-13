@@ -10,10 +10,10 @@ defineProps({
 </script>
 
 <template>
-    <AppLayout title="API Tokens">
+    <AppLayout :title="tc('system.auth.api.title', 2)">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                API Tokens
+                {{tc('system.auth.api.title', 2)}}
             </h2>
         </template>
 

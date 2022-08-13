@@ -27,17 +27,17 @@ const updateTeamName = () => {
 <template>
     <JetFormSection @submitted="updateTeamName">
         <template #title>
-            Team Name
+            {{t('system.auth.team.update.identity.title')}}
         </template>
 
         <template #description>
-            The team's name and owner information.
+            {{t('system.auth.team.update.identity.description')}}
         </template>
 
         <template #form>
             <!-- Team Owner Information -->
             <div class="col-span-6">
-                <JetLabel value="Team Owner" />
+                <JetLabel :value="t('system.auth.team.owner.label')" />
 
                 <div class="flex items-center mt-2">
                     <img class="w-12 h-12 rounded-full object-cover" :src="team.owner.profile_photo_url" :alt="team.owner.name">
@@ -53,7 +53,7 @@ const updateTeamName = () => {
 
             <!-- Team Name -->
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="name" value="Team Name" />
+                <JetLabel for="name" :value="t('system.auth.team.name.label')" />
 
                 <JetInput
                     id="name"
@@ -69,11 +69,11 @@ const updateTeamName = () => {
 
         <template v-if="permissions.canUpdateTeam" #actions>
             <JetActionMessage :on="form.recentlySuccessful" class="mr-3">
-                Saved.
+                {{t('system.global.message.saved')}}
             </JetActionMessage>
 
             <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
+                {{t('system.global.action.save')}}
             </JetButton>
         </template>
     </JetFormSection>

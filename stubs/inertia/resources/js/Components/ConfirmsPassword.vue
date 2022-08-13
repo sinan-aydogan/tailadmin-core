@@ -11,15 +11,18 @@ const emit = defineEmits(['confirmed']);
 defineProps({
     title: {
         type: String,
-        default: 'Confirm Password',
     },
     content: {
         type: String,
-        default: 'For your security, please confirm your password to continue.',
     },
-    button: {
+    passwordText: {
         type: String,
-        default: 'Confirm',
+    },
+    confirmButtonText: {
+        type: String,
+    },
+    cancelButtonText: {
+        type: String,
     },
 });
 
@@ -78,11 +81,11 @@ const closeModal = () => {
 
         <JetDialogModal :show="confirmingPassword" @close="closeModal">
             <template #title>
-                {{ title }}
+                {{ title ? title : t('system.auth.password.confirm.title') }}
             </template>
 
             <template #content>
-                {{ content }}
+                {{ content ? content : t('system.auth.password.confirm.description') }}
 
                 <div class="mt-4">
                     <JetInput
@@ -90,7 +93,7 @@ const closeModal = () => {
                         v-model="form.password"
                         type="password"
                         class="mt-1 block w-3/4"
-                        placeholder="Password"
+                        :placeholder="passwordText ? passwordText : t('system.auth.password.label')"
                         @keyup.enter="confirmPassword"
                     />
 
@@ -100,7 +103,7 @@ const closeModal = () => {
 
             <template #footer>
                 <JetSecondaryButton @click="closeModal">
-                    Cancel
+                    {{ cancelButtonText ? cancelButtonText : t('system.global.action.cancel') }}
                 </JetSecondaryButton>
 
                 <JetButton
@@ -109,7 +112,7 @@ const closeModal = () => {
                     :disabled="form.processing"
                     @click="confirmPassword"
                 >
-                    {{ button }}
+                    {{ confirmButtonText ? confirmButtonText : t('system.global.action.confirm') }}
                 </JetButton>
             </template>
         </JetDialogModal>

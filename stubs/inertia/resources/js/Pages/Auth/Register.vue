@@ -24,7 +24,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Register" />
+    <Head :title="t('system.auth.register.label')" />
 
     <JetAuthenticationCard>
         <template #logo>
@@ -35,7 +35,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <JetLabel for="name" value="Name" />
+                <JetLabel for="name" :value="t('system.auth.name.label')" />
                 <JetInput
                     id="name"
                     v-model="form.name"
@@ -48,7 +48,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <JetLabel for="email" value="Email" />
+                <JetLabel for="email" :value="t('system.auth.email.label')" />
                 <JetInput
                     id="email"
                     v-model="form.email"
@@ -59,7 +59,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <JetLabel for="password" value="Password" />
+                <JetLabel for="password" :value="t('system.auth.password.label')" />
                 <JetInput
                     id="password"
                     v-model="form.password"
@@ -71,7 +71,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <JetLabel for="password_confirmation" value="Confirm Password" />
+                <JetLabel for="password_confirmation" :value="t('system.auth.password.confirm.label')" />
                 <JetInput
                     id="password_confirmation"
                     v-model="form.password_confirmation"
@@ -88,7 +88,19 @@ const submit = () => {
                         <JetCheckbox id="terms" v-model:checked="form.terms" name="terms" />
 
                         <div class="ml-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+
+                            <i18n-t keypath="system.auth.term.agreeToTerms" tag="span">
+                                <template v-slot:term>
+                                    <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                                        {{ t('system.auth.term.terms') }}
+                                    </a>
+                                </template>
+                                <template v-slot:privacyPolicy>
+                                    <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                                        {{ t('system.auth.term.privacyPolicy') }}
+                                    </a>
+                                </template>
+                            </i18n-t>
                         </div>
                     </div>
                 </JetLabel>
@@ -96,11 +108,11 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                    {{ t('system.auth.alreadyRegistered.label') }}
                 </Link>
 
                 <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    {{ t('system.auth.register.label') }}
                 </JetButton>
             </div>
         </form>
