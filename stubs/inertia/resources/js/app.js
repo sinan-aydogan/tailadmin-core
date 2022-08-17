@@ -6,6 +6,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import { createPinia } from 'pinia'
 
 //Language
 import { createI18n } from "vue-i18n";
@@ -26,6 +27,9 @@ import {
 } from "@fortawesome/vue-fontawesome";
 import "./Sources/Icons"
 
+//Pinia
+const pinia = createPinia()
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -42,6 +46,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(i18n)
+            .use(pinia)
             .component("font-awesome-icon", FontAwesomeIcon)
             .component("font-awesome-layers", FontAwesomeLayers)
             .component("font-awesome-layers-text", FontAwesomeLayersText)
