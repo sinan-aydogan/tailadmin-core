@@ -14,6 +14,7 @@ import {translates} from "./Lang/Lang"
 const i18n = createI18n({
     locale: "en",
     fallbackLocale: "en",
+    legacy: false,
     messages: {
         ...translates,
     },
