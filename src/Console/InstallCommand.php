@@ -333,6 +333,13 @@ EOF;
                 ] + $packages;
         });
 
+        // Install NPM dev packages...
+        $this->updateNodePackages(function ($packages) {
+            return [
+                    "sass" => "^1.54.4"
+                ] + $packages;
+        }, true);
+
         // Sanctum...
         (new Process([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path()))
             ->setTimeout(null)
@@ -351,6 +358,8 @@ EOF;
         copy(__DIR__ . '/../../stubs/inertia/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__ . '/../../stubs/inertia/postcss.config.js', base_path('postcss.config.js'));
         copy(__DIR__ . '/../../stubs/inertia/vite.config.js', base_path('vite.config.js'));
+        /*TailAdmin Configuration...*/
+        copy(__DIR__ . '/../../stubs/inertia/jsconfig.json', base_path('jsconfig.json'));
 
         // Directories...
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Fortify'));
@@ -419,6 +428,8 @@ EOF;
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/TailAdmin', resource_path('js/TailAdmin'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/Lang', resource_path('js/Lang'));
         (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/inertia/resources/js/Sources', resource_path('js/Sources'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/resources/sass', resource_path('sass'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../stubs/resources/scss', resource_path('scss'));
 
         // Routes...
         $this->replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
@@ -747,7 +758,7 @@ EOF;
     /**
      * Run the given commands.
      *
-     * @param  array  $commands
+     * @param array $commands
      * @return void
      */
     protected function runCommands($commands)
@@ -758,12 +769,12 @@ EOF;
             try {
                 $process->setTty(true);
             } catch (RuntimeException $e) {
-                $this->output->writeln('  <bg=yellow;fg=black> WARN </> '.$e->getMessage().PHP_EOL);
+                $this->output->writeln('  <bg=yellow;fg=black> WARN </> ' . $e->getMessage() . PHP_EOL);
             }
         }
 
         $process->run(function ($type, $line) {
-            $this->output->write('    '.$line);
+            $this->output->write('    ' . $line);
         });
     }
 }
