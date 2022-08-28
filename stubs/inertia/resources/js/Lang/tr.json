@@ -1,1 +1,36 @@
-{}
+{
+  "menuLabel": {
+    "dashboard": "Ana Sayfa",
+    "uiComponents": "UI Bileşenler",
+    "layoutComponents": "Yerleşim Bileşenleri",
+    "formComponents": "Form Bileşenleri",
+    "alert": "Uyarı Kutuları",
+    "avatar": "Profil Resmi",
+    "button": "Düğmeler",
+    "badge": "Rozetler",
+    "breadcrumb": "Sayfa Navigasyonu",
+    "collapsible": "Açılır İçerik",
+    "list": "Listeler",
+    "modal": "Açılır Pencereler",
+    "pagination": "Sayfalandırma",
+    "tab": "Tab",
+    "table": "Tablolar",
+    "frontendTable": "Frontend Tablo",
+    "backendTable": "Backend Tablo",
+    "tooltip": "Bilgi Balonları",
+    "contentCard": "Content Cards",
+    "grid": "Izgara",
+    "loadingScreen": "Yüklenme Ekranları",
+    "sideMenu": "Menü Sistemi",
+    "formLayout": "Form Şablonu",
+    "buttonInput": "Button Input",
+    "checkboxInput": "Checkbox",
+    "fileInput": "Dosya",
+    "radioInput": "Radio",
+    "rangeInput": "Range",
+    "selectInput": "Select",
+    "virtualSelectInput": "Virtual Select",
+    "textInput": "Text",
+    "textAreaInput": "Text Area"
+  }
+}

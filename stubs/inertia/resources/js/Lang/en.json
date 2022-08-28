@@ -1,1 +1,36 @@
-{}
+{
+  "menuLabel": {
+    "dashboard": "Dashboard",
+    "uiComponents": "UI Components",
+    "layoutComponents": "Layout Components",
+    "formComponents": "Form Components",
+    "alert": "Alert Boxes",
+    "avatar": "Avatar",
+    "button": "Buttons",
+    "badge": "Badges",
+    "breadcrumb": "Breadcrumb",
+    "collapsible": "Collapsible",
+    "list": "List",
+    "modal": "Modal",
+    "pagination": "Pagination",
+    "tab": "Tab",
+    "table": "Table",
+    "frontendTable": "Frontend Table",
+    "backendTable": "Backend Table",
+    "tooltip": "Tooltips",
+    "contentCard": "Content Cards",
+    "grid": "Grid",
+    "loadingScreen": "Loading Screen",
+    "sideMenu": "Side Menu",
+    "formLayout": "Form Layout",
+    "buttonInput": "Button Input",
+    "checkboxInput": "Checkbox",
+    "fileInput": "File",
+    "radioInput": "Radio",
+    "rangeInput": "Range",
+    "selectInput": "Select",
+    "virtualSelectInput": "Virtual Select",
+    "textInput": "Text",
+    "textAreaInput": "Text Area"
+  }
+}
