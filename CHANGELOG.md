@@ -1,6 +1,12 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/jetstream/compare/v5.2.0...5.x)
+## [Unreleased](https://github.com/laravel/jetstream/compare/v5.2.1...5.x)
+
+## [v5.2.1](https://github.com/laravel/jetstream/compare/v5.2.0...v5.2.1) - 2024-10-02
+
+* Update logo to support dark/light theme by [@milewski](https://github.com/milewski) in https://github.com/laravel/jetstream/pull/1538
+* [5.x] Utilise `Illuminate\Support\php_binary()` by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/jetstream/pull/1541
+* Chore: factory doc block in models by [@MrPunyapal](https://github.com/MrPunyapal) in https://github.com/laravel/jetstream/pull/1542
 
 ## [v5.2.0](https://github.com/laravel/jetstream/compare/v5.1.5...v5.2.0) - 2024-09-09
 
